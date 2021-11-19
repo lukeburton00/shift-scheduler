@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :employees
-
   resources :busytimes
 
   root to: 'home#index'
