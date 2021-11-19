@@ -12,6 +12,7 @@
 
   <tbody>
     <% @employees.each do |employee| %>
+    <!--<% if employee.user == current_user %> -->
       <tr>
         <td><%= employee.first_name %></td>
         <td><%= employee.last_name %></td>
@@ -20,6 +21,7 @@
         <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
         <td><%= link_to 'Delete', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <!--<% end %> -->
     <% end %>
   </tbody>
 </table>
