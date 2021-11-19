@@ -10,15 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_043540) do
+ActiveRecord::Schema.define(version: 2021_11_19_061134) do
 
-  create_table "busytimes", force: :cascade do |t|
+  create_table "busy_times", force: :cascade do |t|
     t.integer "employee_id"
     t.integer "start_time"
     t.integer "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["employee_id"], name: "index_busytimes_on_employee_id"
   end
 
   create_table "employees", force: :cascade do |t|
