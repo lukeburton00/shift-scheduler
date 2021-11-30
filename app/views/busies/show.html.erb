@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @busy.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @busy.end_time %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @busy.employee_id %>
+</p>
+
+<%= link_to 'Edit', edit_busy_path(@busy) %> |
+<%= link_to 'Back', busies_path %>

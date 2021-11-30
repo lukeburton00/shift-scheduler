@@ -1,20 +1,15 @@
-<%= form_with(model: busy_time) do |form| %>
-  <% if busy_time.errors.any? %>
+<%= form_with(model: busy) do |form| %>
+  <% if busy.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(busy_time.errors.count, "error") %> prohibited this busy_time from being saved:</h2>
+      <h2><%= pluralize(busy.errors.count, "error") %> prohibited this busy from being saved:</h2>
 
       <ul>
-        <% busy_time.errors.each do |error| %>
+        <% busy.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :employee_id %>
-    <%= form.number_field :employee_id %>
-  </div>
 
   <div class="field">
     <%= form.label :start_time %>
@@ -24,6 +19,11 @@
   <div class="field">
     <%= form.label :end_time %>
     <%= form.number_field :end_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :employee_id %>
+    <%= form.number_field :employee_id %>
   </div>
 
   <div class="actions">

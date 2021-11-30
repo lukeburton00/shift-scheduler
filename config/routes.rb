@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :busies
   resources :busy_times
   devise_for :users
   resources :employees
