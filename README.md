@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby 3.0.2
 
-Things you may want to cover:
+Rails 6.1.4.1
 
-* Ruby version
+Current Implemented Features (11/29/2021):
+- User sign-up, sign-in, authentication
+- User can see their own employees, CRUD operations on employees
+- "Busies" table exists, associated with each employee. A "Busy" is a time that the employee cannot work.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Working on:
+- A view to create a new Busy for a specified employee
+- Display Busies by one employee at a time
