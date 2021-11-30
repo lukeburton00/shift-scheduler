@@ -1,4 +1,4 @@
 class Employee < ApplicationRecord
-    belongs_to :user, dependent: :destroy
-    has_many :busies
+    belongs_to :user
+    has_many :busies, dependent: :destroy
 end

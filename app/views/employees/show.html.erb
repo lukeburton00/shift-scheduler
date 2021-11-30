@@ -4,12 +4,17 @@
   </h1>
   <br>
 
-
-
 <p style="margin-top: 5ems;">
+  <strong>Employee ID:</strong>
+  <%= @employee.id %>
+  <br>
   <strong>Phone:</strong>
   <%= @employee.phone %>
 </p>
+<%= link_to 'Create New Busy', new_busy_path(@employee.id, employee_id: @employee.id),  class:"btn btn-outline-secondary"%>
+<br>
+<br>
 
 <%= link_to 'Edit', edit_employee_path(@employee), class:"btn btn-outline-secondary"%>
 <%= link_to 'Back', employees_path,  class:"btn btn-outline-secondary"%>
+

@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_30_014115) do
+ActiveRecord::Schema.define(version: 2021_11_30_160035) do
 
   create_table "busies", force: :cascade do |t|
-    t.integer "start_time"
-    t.integer "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer "employee_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
