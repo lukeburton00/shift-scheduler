@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_30_160035) do
+ActiveRecord::Schema.define(version: 2021_12_01_212232) do
 
   create_table "busies", force: :cascade do |t|
     t.datetime "start_time"
