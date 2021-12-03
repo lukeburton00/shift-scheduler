@@ -5,7 +5,13 @@ class EmployeesController < ApplicationController
 
   # GET /employees or /employees.json
   def index
-    @employees = Employee.all
+    if params[:start_time].present? && params[:end_time].present?
+      @employees = Employee.left_outer_joins(:busies).where(busies: {id: nil})
+      
+  
+    else
+      @employees = Employee.all
+    end
   end
 
   # GET /employees/1 or /employees/1.json

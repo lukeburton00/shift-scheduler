@@ -1,6 +1,6 @@
 <h1 style="display:inline; width: 100px;">
 
-  <%= @employee.first_name + ' ' + @employee.last_name %>
+  <%= @employee.first_name + @employee.last_name %>
   </h1>
   <br>
   <br>
@@ -47,4 +47,3 @@ Employee Busies:
 
 <%= link_to 'Edit', edit_employee_path(@employee), class:"btn btn-outline-secondary"%>
 <%= link_to 'Back', employees_path,  class:"btn btn-outline-secondary"%>
-
