@@ -1,6 +1,6 @@
 <h1>Employees</h1>
 
-<% if current_user.employees.first != nil %>
+<% if current_user.employees.first != nil%>
   <table class="table">
     <thead>
       <tr>
@@ -25,26 +25,18 @@
     </tbody>
   </table>
 <% end %>
-
-
 <br>
 
 <%= link_to 'New Employee', new_employee_path, class:"btn btn-outline-secondary" %>
-
 <br>
 <br>
 <br>
 <br>
 <br>
-
 
 <h3>
 Find Employees to Schedule:
 </h3>
 <br>
 
-
 <%= render 'search.html.erb' %>
-<br>
-<p> Available employees will be displayed in the table above. </p>
-

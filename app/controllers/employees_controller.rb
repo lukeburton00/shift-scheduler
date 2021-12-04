@@ -5,8 +5,21 @@ class EmployeesController < ApplicationController
 
   # GET /employees or /employees.json
   def index
+
     if params[:start_time].present? && params[:end_time].present?
-      @employees = Employee.left_outer_joins(:busies).where(busies: {id: nil})
+
+      
+      start_time = params[:start_time].to_datetime
+      end_time = params[:end_time].to_datetime
+
+      @employees = Employee.joins("left outer join busies 
+                              on busies.start_time > '#{start_time}'
+                              and busies.start_time < '#{end_time}'
+                              and busies.end_time > '#{start_time}'
+                              and busies.end_time < '#{end_time}' "
+                              ).where(busies: {id: nil}) 
+      
+      flash.now[:notice] = "Employees available for your shift are listed below."
       
   
     else
