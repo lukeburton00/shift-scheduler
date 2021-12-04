@@ -13,10 +13,10 @@ class EmployeesController < ApplicationController
       end_time = params[:end_time].to_datetime
 
       @employees = Employee.joins("left outer join busies 
-                              on busies.start_time > '#{start_time}'
-                              and busies.start_time < '#{end_time}'
-                              and busies.end_time > '#{start_time}'
-                              and busies.end_time < '#{end_time}' "
+                              on (busies.start_time > '#{start_time}'
+                              and busies.start_time < '#{end_time}')
+                              or (busies.end_time > '#{start_time}'
+                              and busies.end_time < '#{end_time}') "
                               ).where(busies: {id: nil}) 
       
       flash.now[:notice] = "Employees available for your shift are listed below."
