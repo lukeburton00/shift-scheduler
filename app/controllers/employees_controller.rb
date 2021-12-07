@@ -9,18 +9,38 @@ class EmployeesController < ApplicationController
     if params[:start_time].present? && params[:end_time].present?
 
       
-      start_time = params[:start_time].to_datetime
-      end_time = params[:end_time].to_datetime
+      start_time = params[:start_time].to_datetime.strftime("%F %T UTC")
+      end_time = params[:end_time].to_datetime.strftime("%F %T UTC")
 
-      @employees = Employee.joins("left outer join busies 
-                              on (busies.start_time > '#{start_time}'
-                              and busies.start_time < '#{end_time}')
-                              or (busies.end_time > '#{start_time}'
-                              and busies.end_time < '#{end_time}') "
-                              ).where(busies: {id: nil}) 
+      @start_time = start_time
+      @end_time = end_time
+
+      #sql = ("select * from Employees
+      #      left join Busies
+      #      on (busies.start_time > '#{start_time}'
+      #      and busies.start_time < '#{end_time}')
+      #      or (busies.end_time > '#{start_time}'
+      #      and busies.end_time < '#{end_time}') 
+      #      where Busies.id is null;")
+
+      #@employees = ActiveRecord::Base.connection.execute(sql)
+
+
+
+      @employees = Employee.joins("left join busies 
+                                  on busies.employee_id = employees.id"
+                                  ).where("busies.id is null 
+                                  and (busies.start_time not between '#{start_time}' and '#{end_time}')
+                                  or (busies.end_time not between '#{start_time}' and '#{end_time}') 
+                                  or busies.id is null")
+                              
+                              
       
-      flash.now[:notice] = "Employees available for your shift are listed below."
-      
+      if @employees.nil?
+        flash.now[:notice] = "There are no employees available for your selected shift."
+      else
+        flash.now[:notice] = "Employees available for your shift are listed below."
+      end
   
     else
       @employees = Employee.all
