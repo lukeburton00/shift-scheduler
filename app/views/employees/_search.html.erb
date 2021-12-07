@@ -1,17 +1,19 @@
+<%# Form to collect DateTime params to search for available employees %>
 <%= form_with url: '/employees', method: :get do |form| %>
 
-    <%= form.label :start_time, "Desired Start Time:" %>
-    <%= form.datetime_field :start_time, class: "input-group date datetimepicker1"  %>
-    <br>
-    <br>
-
-
-
-    <%= form.label :end_time, "Desired End Time:" %>
-    <%= form.datetime_field :end_time, class: "input-group date datetimepicker1" %>
-    <br>
+    <div class="field form-group">
+        <%= form.label :start_time, "Desired Start Time:" %>
+        <%= form.datetime_field :start_time, class: "input-group date datetimepicker1"  %>
+    </div>
     <br>
 
+    <div class="field form-group">
+        <%= form.label :end_time, "Desired End Time:" %>
+        <%= form.datetime_field :end_time, class: "input-group date datetimepicker1" %>
+    </div>
+    <br>
 
-    <%= form.submit  'Find Employees', class:"btn btn-outline-secondary"%>
+    <div class="actions form-group">
+        <%= form.submit  'Find Employees', class:"btn btn-outline-secondary"%>
+    </div>
     <% end %>

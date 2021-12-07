@@ -1,2 +1,11 @@
 <h1>Welcome to ShiftScheduler!</h1>
+
+<%# Display content based on user status %>
+
+<% if (user_signed_in?) %>
+<p>Head to the "My Employees" tab to get started!</p>
+
+<% else %>
 <p>Sign up above.</p>
+
+<% end %>

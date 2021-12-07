@@ -1,7 +1,7 @@
 <h1>Employees</h1>
 
-<%= @start_time %>
-<%= @end_time %>
+<%# If there is a user logged in, and they have empoyees. %>
+<%# Else, do not display table %>
 
 <% if current_user.employees.first != nil%>
   <table class="table">
@@ -30,6 +30,7 @@
 <% end %>
 <br>
 
+<%# Create new employee %>
 <%= link_to 'New Employee', new_employee_path, class:"btn btn-outline-secondary" %>
 <br>
 <br>
@@ -37,6 +38,7 @@
 <br>
 <br>
 
+<%# Title and render employee search form %>
 <h3>
 Find Employees to Schedule:
 </h3>
