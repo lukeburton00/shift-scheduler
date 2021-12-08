@@ -16,8 +16,8 @@ class EmployeesController < ApplicationController
       @employees = Employee.joins("left join busies 
                                   on busies.employee_id = employees.id"
                                   ).where("busies.id is null 
-                                  and (busies.start_time not between '#{start_time}' and '#{end_time}')
-                                  or (busies.end_time not between '#{start_time}' and '#{end_time}') 
+                                  and (busies.start_time not between '#{start_time}' and '#{end_time}'
+                                  or busies.end_time not between '#{start_time}' and '#{end_time}') 
                                   or busies.id is null")                   
       
       #If there are no resulting employees/none to begin with, notice
