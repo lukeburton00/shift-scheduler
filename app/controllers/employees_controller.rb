@@ -9,17 +9,17 @@ class EmployeesController < ApplicationController
     #Check if params are being passed
     if params[:start_time].present? && params[:end_time].present?
       #Convert string params to DateTime and format for comparison
-      start_time = params[:start_time].to_datetime.strftime("%F %T UTC")
-      end_time = params[:end_time].to_datetime.strftime("%F %T UTC")
+      
+      start_time = ActiveRecord::Base.connection.quote(params[:start_time].to_time(:utc).strftime("%Y-%m-%d %H:%M"))
+      end_time = ActiveRecord::Base.connection.quote(params[:end_time].to_time(:utc).strftime("%Y-%m-%d %H:%M"))
 
       #Outer join employees with busies to display available employees
-      @employees = Employee.joins("left join busies 
-                                  on busies.employee_id = employees.id"
-                                  ).where("busies.id is null 
-                                  and (busies.start_time not between '#{start_time}' and '#{end_time}'
-                                  or busies.end_time not between '#{start_time}' and '#{end_time}') 
-                                  or busies.id is null")                   
-      
+      @employees = current_user.employees.joins("left join busies 
+                                  on busies.employee_id = employees.id
+                                  and (busies.start_time between #{start_time} and #{end_time}
+                                  or busies.end_time between #{start_time} and #{end_time})"
+                                  ).where(busies: {id: nil})
+
       #If there are no resulting employees/none to begin with, notice
       if @employees.nil?
         flash.now[:notice] = "There are no employees available for your selected shift."
@@ -29,7 +29,7 @@ class EmployeesController < ApplicationController
       end
     #If no params are passed in - just standard employee/index page
     else
-      @employees = Employee.all
+      @employees = current_user.employees
     end
   end
 
