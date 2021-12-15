@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_06_235641) do
+ActiveRecord::Schema.define(version: 2021_12_15_195735) do
 
   create_table "busies", force: :cascade do |t|
     t.datetime "start_time"
@@ -42,5 +42,4 @@ ActiveRecord::Schema.define(version: 2021_12_06_235641) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "busies", "employees"
 end
