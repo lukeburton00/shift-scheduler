@@ -5,13 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
         has_many :employees, dependent: :destroy
-        accepts_nested_attributes_for :employee
-
-  enum role: [:manager, :employee]
-  after_initialize :set_default_role, :if => :new_record?
-
-  def set_default_role
-    self.role ||= :manager
-  end
 
 end
